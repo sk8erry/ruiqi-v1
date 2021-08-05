@@ -30,8 +30,7 @@ const theme = {
   fonts: {
     Calibre:
       'Calibre, San Francisco, SF Pro Text, -apple-system, system-ui, BlinkMacSystemFont, Roboto, Helvetica Neue, Segoe UI, Arial, sans-serif',
-    SFMono:
-      'SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console, Monaco, monospace'
+    SFMono: 'SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console, Monaco, monospace'
   },
 
   fontSizes: {
@@ -46,6 +45,11 @@ const theme = {
   },
 
   easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+  animationDuration: {
+    short: '300',
+    medium: '500',
+    long: '800'
+  },
   transition: 'all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1)',
 
   borderRadius: '2px',

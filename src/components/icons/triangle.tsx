@@ -9,10 +9,10 @@ export const Triangle = () => {
       height="200"
       viewBox="0 0 24 24"
       fill="none"
-      stroke={theme.colors.blueGrey}
-      stroke-width="1"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={theme.colors.green}
+      strokeWidth="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path d="M3 20h18L12 4z"></path>
     </svg>

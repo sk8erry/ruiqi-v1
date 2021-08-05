@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 import theme from './theme'
 import media from './media'
-const { colors, fontSizes, fonts } = theme
+const { colors, fontSizes, fonts, transition, borderRadius } = theme
 
 const mixins = {
   flexCenter: css`
@@ -26,7 +26,7 @@ const mixins = {
     text-decoration-skip-ink: auto;
     color: inherit;
     position: relative;
-    transition: ${theme.transition};
+    transition: ${transition};
     cursor: pointer;
     &:hover,
     &:active,
@@ -41,7 +41,7 @@ const mixins = {
     text-decoration: none;
     text-decoration-skip-ink: auto;
     position: relative;
-    transition: ${theme.transition};
+    transition: ${transition};
     cursor: pointer;
     color: ${colors.green};
     &:hover,
@@ -51,6 +51,7 @@ const mixins = {
       outline: 0;
       &:after {
         width: 100%;
+        transform: translateY(1px);
       }
     }
     &:after {
@@ -59,9 +60,9 @@ const mixins = {
       width: 0;
       height: 1px;
       position: relative;
-      bottom: 0.37em;
+      bottom: 0.17em;
       background-color: ${colors.green};
-      transition: ${theme.transition};
+      transition: ${transition};
     }
   `,
 
@@ -69,14 +70,14 @@ const mixins = {
     color: ${colors.green};
     background-color: transparent;
     border: 1px solid ${colors.green};
-    border-radius: ${theme.borderRadius};
+    border-radius: ${borderRadius};
     padding: 12px 17px;
     font-size: ${fontSizes.smallish};
     font-family: ${fonts.SFMono};
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
-    transition: ${theme.transition};
+    transition: ${transition};
     &:hover,
     &:focus,
     &:active {
@@ -91,14 +92,14 @@ const mixins = {
     color: ${colors.green};
     background-color: transparent;
     border: 1px solid ${colors.green};
-    border-radius: ${theme.borderRadius};
+    border-radius: ${borderRadius};
     padding: 18px 23px;
     font-size: ${fontSizes.small};
     font-family: ${fonts.SFMono};
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
-    transition: ${theme.transition};
+    transition: ${transition};
     &:hover,
     &:focus,
     &:active {

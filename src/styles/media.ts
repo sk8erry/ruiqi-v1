@@ -1,4 +1,3 @@
-//@ts-ignore
 import { css } from 'styled-components'
 
 export interface IMedia {
