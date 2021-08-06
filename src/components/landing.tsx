@@ -1,10 +1,9 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { theme, mixin } from '../styles'
+import { theme, mixins, media } from '../styles'
 import { Circle, Triangle, Square } from './icons'
-import { CSSTransition } from 'react-transition-group'
 import { useIsMounted, useScroll } from '../hooks'
-import { Fadedown, LargeFadeUp } from './animations'
+import { Fadedown, HeroTextFadeup, LargeFadeUp } from './animations'
 
 const { colors, fonts, fontSizes } = theme
 
@@ -15,11 +14,19 @@ const PageContainer = styled.div`
   justfiy-content: center;
   min-height: 100vh;
   a {
-    ${mixin.inlineLink};
+    ${mixins.inlineLink};
   }
 `
 
 const LandingPageItemContainer = styled.div`
+  in-height: 100vh;
+  display: flex;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+`
+
+const LandingPageItemInnerContainer = styled.div`
   display: flex;
   width: 100%;
   flex-grow: 1;
@@ -39,8 +46,8 @@ const LangingPageItem = styled.div`
 const BigText = styled.h1`
   color: ${colors.slate};
   font-size: 26rem;
-  line-height: 24rem;
-  letter-spacing: 2rem;
+  line-height: 26rem;
+  letter-spacing: 1rem;
   font-family: ${fonts.Calibre};
   width: 100%;
   margin: 0;
@@ -49,6 +56,8 @@ const BigText = styled.h1`
   text-align: center;
   position: fixed;
   top: 50%;
+  ${media.bigDesktop`font-size: 10rem;line-height: 10rem;`};
+  ${media.phablet`font-size: 4.5rem;line-height: 4.5rem;`};
 `
 
 const NameContainer = styled.div`
@@ -57,11 +66,11 @@ const NameContainer = styled.div`
   padding: 1rem;
   font-size: ${fontSizes.medium};
   a {
-    ${mixin.inlineLink}
+    ${mixins.inlineLink}
   }
 `
 
-export const Landing = ({ handleScroll }) => {
+export const Landing: React.FC<{ handleScroll: () => void }> = ({ handleScroll }) => {
   const isMounted = useIsMounted()
 
   const [navItems, setNavItems] = React.useState([
@@ -85,7 +94,7 @@ export const Landing = ({ handleScroll }) => {
     }
   ])
 
-  const [scrolling, scrollTop] = useScroll()
+  const [scrolling] = useScroll()
 
   const onMouseEnter = ({ target }) => {
     const newNavItems = [...navItems]
@@ -107,32 +116,31 @@ export const Landing = ({ handleScroll }) => {
         </NameContainer>
       </Fadedown>
       <LandingPageItemContainer>
-        {navItems.map((navItem) => (
-          <LangingPageItem key={navItem.id}>
-            <LargeFadeUp in={isMounted}>
-              <div style={{ transitionDelay: `${navItem.id * 100}ms` }}>
-                <LandingPageLink
-                  onMouseEnter={() => onMouseEnter({ target: navItem })}
-                  onMouseLeave={() => onMouseLeave({ target: navItem })}
-                  onClick={() => handleScroll()}
-                >
-                  {navItem.icon}
-                </LandingPageLink>
-              </div>
-            </LargeFadeUp>
-          </LangingPageItem>
-        ))}
+        <LandingPageItemInnerContainer>
+          {navItems.map((navItem) => (
+            <LangingPageItem key={navItem.id}>
+              <LargeFadeUp in={isMounted}>
+                <div style={{ transitionDelay: `${navItem.id * 100}ms` }}>
+                  <LandingPageLink
+                    onMouseEnter={() => onMouseEnter({ target: navItem })}
+                    onMouseLeave={() => onMouseLeave({ target: navItem })}
+                    onClick={() => {
+                      handleScroll()
+                      setTimeout(() => onMouseLeave({ target: navItem }), 500)
+                    }}
+                  >
+                    {navItem.icon}
+                  </LandingPageLink>
+                </div>
+              </LargeFadeUp>
+            </LangingPageItem>
+          ))}
+        </LandingPageItemInnerContainer>
       </LandingPageItemContainer>
       {navItems.map((navItem) => (
-        <CSSTransition
-          unmountOnExit
-          in={navItem?.active && !scrolling}
-          timeout={1500}
-          classNames="hero-text-fadeup"
-          key={navItem.id}
-        >
+        <HeroTextFadeup in={navItem?.active && !scrolling} key={navItem.id}>
           <BigText>{navItem.title}</BigText>
-        </CSSTransition>
+        </HeroTextFadeup>
       ))}
     </PageContainer>
   )

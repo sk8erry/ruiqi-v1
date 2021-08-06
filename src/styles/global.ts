@@ -3,7 +3,7 @@ import * as fontFamilies from './fonts'
 import media from './media'
 import theme from './theme'
 
-const { fontSizes, fonts, colors, transition, animationDuration, easing } = theme
+const { fontSizes, fonts, colors } = theme
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -171,64 +171,6 @@ const GlobalStyle = createGlobalStyle`
   .nav-link-text {
     color: black;
   }
-  .fadedown-enter {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity ${animationDuration.medium}ms ${easing}, transform ${animationDuration.medium}ms ${easing};
-  }
-  .fadedown-enter-active {
-    opacity: 1;
-    transform: translateY(0px);
-    transition: opacity ${animationDuration.medium}ms ${easing}, transform ${animationDuration.medium}ms ${easing};
-  }
-  .fadedown-exit-active {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity ${animationDuration.medium}ms ${easing}, transform ${animationDuration.medium}ms ${easing};
-  }
-  .fadedown-exit-done {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  .lg-fadeup-enter {
-    opacity: 0;
-    transform: translateY(120px);
-    transition: opacity ${animationDuration.long}ms ${easing}, transform ${animationDuration.long}ms ${easing};
-  }
-  .lg-fadeup-enter-active {
-    opacity: 1;
-    transform: translateY(0px);
-    transition: opacity ${animationDuration.long}ms ${easing}, transform ${animationDuration.long}ms ${easing};
-  }
-  .lg-fadeup-exit-active {
-    opacity: 0;
-    transform: translateY(120px);
-    transition: opacity ${animationDuration.long}ms ${easing}, transform ${animationDuration.long}ms ${easing};
-  }
-  .hero-text-fadeup-enter {
-    opacity: 0;
-    transform: translateY(120px);
-    transition: opacity ${animationDuration.short}ms ${easing}, transform ${animationDuration.short}ms ${easing};
-  }
-  .hero-text-fadeup-enter-active {
-    opacity: 0.7;
-    transform: translateY(-40px);
-    transition: opacity ${animationDuration.short}ms ${easing}, transform ${animationDuration.short}ms ${easing};
-  }
-  .hero-text-fadeup-enter-done {
-    opacity: 0.7;
-    transform: translateY(-40px);
-  }
-  .hero-text-fadeup-exit {
-    opacity: 0.7;
-    transform: translateY(-40px);
-  }
-  .hero-text-fadeup-exit-active {
-    opacity: 0;
-    transform: translateY(120px);
-    transition: opacity ${animationDuration.short}ms ${easing}, transform ${animationDuration.short}ms ${easing};
-  }
-  
 `
 
 export default GlobalStyle

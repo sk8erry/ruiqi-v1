@@ -11,7 +11,7 @@ const IndexPage = () => {
   const pageTitle = 'Ruiqi Yang'
   const aboutSectionRef = React.useRef(null)
   const workSectionRef = React.useRef(null)
-  const handleScroll = () => aboutSectionRef.current.scrollIntoView({ behavior: 'smooth' })
+  const handleScroll = () => setTimeout(() => aboutSectionRef.current.scrollIntoView({ behavior: 'smooth' }), 300)
   return (
     <>
       <GlobalStyle />

@@ -7,11 +7,19 @@ module.exports = {
     'gatsby-plugin-gatsby-cloud',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
+    `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: `blog`,
+        name: `content`,
         path: `${__dirname}/content`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: `images`,
+        path: `${__dirname}/images`
       }
     },
     'gatsby-plugin-mdx',

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { CONFIG } from '../config'
 import styled from 'styled-components'
 import { theme, media } from '../styles'
@@ -43,7 +42,7 @@ const EmailLink = styled.a`
   padding: 10px;
 `
 
-export const Email = () => {
+export const Email: React.FC = () => {
   const isMounted = true
 
   return (
