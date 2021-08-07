@@ -14,21 +14,21 @@ const Container = styled.div`
 `
 
 export const Layout: React.FC<IPROPS> = ({ pageTitle, children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <Container>
-      <title>
+      {/* <title>
         {pageTitle} | {data?.site?.siteMetadata?.title}
-      </title>
+      </title> */}
       {children}
     </Container>
   )

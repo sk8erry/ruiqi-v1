@@ -82,33 +82,9 @@ const TechListContainer = styled.ul`
   }
 `
 
-export const Work: React.FC = () => {
-  const data = useStaticQuery(graphql`
-    query WorkQuery {
-      allMdx(filter: { slug: { regex: "/works/" } }, sort: { fields: frontmatter___order, order: ASC }) {
-        nodes {
-          body
-          slug
-          frontmatter {
-            company
-            date
-            title
-            url
-            location
-            range
-            type
-            techList
-          }
-        }
-      }
-    }
-  `)
+export const Work: React.FC<any> = ({ work }) => {
+  const { nodes } = work
 
-  const {
-    allMdx: { nodes }
-  } = data
-
-  console.log(nodes)
   const ref = useRef(null)
   const isOnScreen = useOnScreen(ref)
 
@@ -138,8 +114,8 @@ export const Work: React.FC = () => {
               </WorkContent>
               {techList?.length > 0 && (
                 <TechListContainer>
-                  {techList.map((tech) => (
-                    <li>{tech}</li>
+                  {techList.map((tech, i) => (
+                    <li key={i}>{tech}</li>
                   ))}
                 </TechListContainer>
               )}

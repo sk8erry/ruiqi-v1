@@ -1,5 +1,4 @@
 import { useStaticQuery } from 'gatsby'
-import { graphql } from 'gatsby'
 import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import * as React from 'react'
@@ -42,38 +41,17 @@ const UnorderedList = styled.ul`
   }
 `
 
-export const About: React.FC = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      mdx(slug: { eq: "about/about" }) {
-        body
-        frontmatter {
-          skills
-          title
-          featuredImage {
-            childImageSharp {
-              fluid(maxWidth: 1200) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-
+export const About: React.FC<any> = ({ about }) => {
   const {
-    mdx: {
-      body,
-      frontmatter: {
-        skills,
-        title,
-        featuredImage: {
-          childImageSharp: { fluid }
-        }
+    body,
+    frontmatter: {
+      skills,
+      title,
+      featuredImage: {
+        childImageSharp: { fluid }
       }
     }
-  } = data
+  } = about
 
   const ref = React.useRef(null)
   const isInView = useOnScreen(ref)
