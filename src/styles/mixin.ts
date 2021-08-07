@@ -60,7 +60,7 @@ const mixins = {
       width: 0;
       height: 1px;
       position: relative;
-      bottom: 0.17em;
+      bottom: 0.5em;
       background-color: ${colors.green};
       transition: ${transition};
     }
