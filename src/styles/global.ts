@@ -137,7 +137,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0px;
     background-color: ${colors.navy};
     color: ${colors.slate};
-    font-size: ${fontSizes.medium};
+    font-size: ${fontSizes.large};
     line-height: 1.5;
     ${media.phablet`font-size: ${fontSizes.large};`}
   }

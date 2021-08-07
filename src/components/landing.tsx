@@ -64,7 +64,7 @@ const NameContainer = styled.div`
   position: absolute;
   left: 0;
   padding: 1rem;
-  font-size: ${fontSizes.medium};
+  font-size: ${fontSizes.large};
   a {
     ${mixins.inlineLink}
   }
