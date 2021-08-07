@@ -32,34 +32,20 @@ const ImgWrapper = styled.div`
 `
 
 const UnorderedList = styled.ul`
-  list-style-type: none;
-  padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(140px, 200px));
   gap: 0px 10px;
-  padding: 0px;
-  margin: 20px 0px 0px;
-  overflow: hidden;
-  list-style: none;
+  font-family: ${theme.fonts.SFMono};
+  ${mixins.arrowList};
   li {
-    padding: 5px 0;
     letter-spacing: 0.1em;
   }
-  li::before {
-    content: '▹';
-    color: ${colors.green};
-    font-size: ${fontSizes.small};
-    width: 16px;
-    padding-right: 1em;
-  }
-  font-size: ${fontSizes.xsmall};
-  font-family: ${fonts.SFMono};
 `
 
-export const About: React.FC = React.memo(() => {
+export const About: React.FC = () => {
   const data = useStaticQuery(graphql`
     query {
-      mdx(slug: { eq: "about" }) {
+      mdx(slug: { eq: "about/about" }) {
         body
         frontmatter {
           skills
@@ -75,6 +61,7 @@ export const About: React.FC = React.memo(() => {
       }
     }
   `)
+
   const {
     mdx: {
       body,
@@ -89,7 +76,7 @@ export const About: React.FC = React.memo(() => {
   } = data
 
   const ref = React.useRef(null)
-  const isOn = useOnScreen(ref)
+  const isInView = useOnScreen(ref)
 
   return (
     <Container ref={ref}>
@@ -109,4 +96,4 @@ export const About: React.FC = React.memo(() => {
       </Grid>
     </Container>
   )
-})
+}

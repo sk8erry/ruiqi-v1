@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Landing, Layout, Work, About, Section, Email } from '../components'
 import { Fadeup } from '../components/animations'
 import { GlobalStyle } from '../styles'
+import { isMobile } from 'react-device-detect'
 
 const IndexPage = () => {
   const [isMounted, setIsMounted] = React.useState(false)
@@ -11,7 +12,8 @@ const IndexPage = () => {
   const pageTitle = 'Ruiqi Yang'
   const aboutSectionRef = React.useRef(null)
   const workSectionRef = React.useRef(null)
-  const handleScroll = () => setTimeout(() => aboutSectionRef.current.scrollIntoView({ behavior: 'smooth' }), 300)
+  const handleScroll = () =>
+    setTimeout(() => aboutSectionRef.current.scrollIntoView({ behavior: 'smooth' }), isMobile ? 300 : 0)
   return (
     <>
       <GlobalStyle />

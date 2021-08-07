@@ -110,6 +110,26 @@ const mixins = {
     }
   `,
 
+  arrowList: css`
+    list-style-type: none;
+    padding: 0;
+    padding: 0px;
+    margin: 20px 0px 0px;
+    overflow: hidden;
+    list-style: none;
+    li {
+      padding: 5px 0;
+    }
+    li::before {
+      content: '▹';
+      color: ${colors.green};
+      font-size: ${fontSizes.small};
+      width: 16px;
+      padding-right: 1em;
+    }
+    font-size: ${fontSizes.xsmall};
+  `,
+
   sidePadding: css`
     padding: 0 150px;
     ${media.desktop`padding: 0 100px;`};

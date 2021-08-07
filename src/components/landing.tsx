@@ -70,6 +70,16 @@ const NameContainer = styled.div`
   }
 `
 
+const IconWrapper = styled.div`
+  display: block;
+  ${media.thone`display: none`};
+`
+
+const IconWrapperMobile = styled.div`
+  display: none;
+  ${media.thone`display: block`};
+`
+
 export const Landing: React.FC<{ handleScroll: () => void }> = ({ handleScroll }) => {
   const isMounted = useIsMounted()
 
@@ -77,19 +87,19 @@ export const Landing: React.FC<{ handleScroll: () => void }> = ({ handleScroll }
     {
       id: 0,
       title: 'About',
-      icon: <Triangle></Triangle>,
+      icon: (size: number) => <Triangle size={size}></Triangle>,
       active: false
     },
     {
       id: 1,
       title: 'Work',
-      icon: <Square></Square>,
+      icon: (size: number) => <Square size={size}></Square>,
       active: false
     },
     {
       id: 2,
       title: 'Contact',
-      icon: <Circle></Circle>,
+      icon: (size: number) => <Circle size={size}></Circle>,
       active: false
     }
   ])
@@ -129,7 +139,8 @@ export const Landing: React.FC<{ handleScroll: () => void }> = ({ handleScroll }
                       setTimeout(() => onMouseLeave({ target: navItem }), 500)
                     }}
                   >
-                    {navItem.icon}
+                    <IconWrapper>{navItem.icon(200)}</IconWrapper>
+                    <IconWrapperMobile>{navItem.icon(120)}</IconWrapperMobile>
                   </LandingPageLink>
                 </div>
               </LargeFadeUp>

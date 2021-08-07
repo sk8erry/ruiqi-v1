@@ -1,11 +1,15 @@
 import * as React from 'react'
 import { theme } from '../../styles'
 
-export const Square = () => (
+interface IPROPS {
+  size: number
+}
+
+export const Square: React.FC<IPROPS> = ({ size }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="120"
-    height="120"
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke={theme.colors.green}

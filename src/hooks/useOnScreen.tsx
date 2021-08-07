@@ -1,9 +1,9 @@
 import * as React from 'react'
 
 export const useOnScreen = (ref: any) => {
-  const [isIntersecting, setIntersecting] = React.useState(false)
+  const [isInView, setIsInView] = React.useState(false)
 
-  const observer = React.useMemo(() => new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting)), [])
+  const observer = React.useMemo(() => new IntersectionObserver(([entry]) => setIsInView(entry.isIntersecting)), [])
 
   React.useEffect(() => {
     observer.observe(ref.current)
@@ -13,5 +13,5 @@ export const useOnScreen = (ref: any) => {
     }
   }, [])
 
-  return isIntersecting
+  return isInView
 }

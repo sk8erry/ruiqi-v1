@@ -24,7 +24,7 @@ const Container = styled.div`
 export const SectionTitle: React.FC<IPROPS> = ({ children }) => {
   return (
     <Container>
-      <h2>{children}</h2>
+      <h1>{children}</h1>
       <div></div>
     </Container>
   )
