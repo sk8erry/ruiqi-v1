@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Landing, Layout, Work, About, Section, Email, Contact, Footer } from '../components'
+import { Landing, Layout, Work, About, Section, Email, Contact, Footer, Head } from '../components'
 import { Fadeup } from '../components/animations'
 import { GlobalStyle } from '../styles'
 import { isMobile } from 'react-device-detect'
@@ -34,6 +34,7 @@ const IndexPage = ({ data: { about, work, contact } }) => {
 
   return (
     <>
+      <Head></Head>
       <GlobalStyle />
       <Layout pageTitle={pageTitle}>
         <Fadeup in={isMounted}>

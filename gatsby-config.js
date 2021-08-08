@@ -4,25 +4,26 @@ module.exports = {
     title: 'Ruiqi Yang'
   },
   plugins: [
-    'gatsby-plugin-gatsby-cloud',
-    'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
+    `gatsby-plugin-gatsby-cloud`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,
         path: `${__dirname}/content`
       }
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/images`
       }
     },
-    'gatsby-plugin-mdx',
-    'gatsby-plugin-styled-components'
+    `gatsby-plugin-mdx`,
+    `gatsby-plugin-styled-components`
   ]
 }

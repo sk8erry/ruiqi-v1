@@ -6,5 +6,6 @@ import { Section } from './section'
 import { Email } from './email'
 import { Contact } from './contact'
 import { Footer } from './footer'
+import { Head } from './head'
 
-export { About, Email, Layout, Landing, Work, Section, Contact, Footer }
+export { About, Email, Layout, Landing, Work, Section, Contact, Footer, Head }
