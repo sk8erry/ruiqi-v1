@@ -6,6 +6,8 @@ import { media, mixins, theme } from '../styles'
 import { Fadeup } from './animations'
 import { SectionTitle } from './sectionTitle'
 
+const { fontSizes } = theme
+
 interface IPROPS {
   contact: {
     body: string
@@ -24,6 +26,7 @@ const ButtonContainer = styled.div`
 
 const ContentContainer = styled.div`
   padding: 18px 0;
+  font-size: ${fontSizes.xlarge};
   ${mixins.fadeupReady}
 `
 
