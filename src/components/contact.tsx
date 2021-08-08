@@ -5,6 +5,7 @@ import { useOnScreen } from '../hooks'
 import { media, mixins, theme } from '../styles'
 import { Fadeup } from './animations'
 import { SectionTitle } from './sectionTitle'
+import { config } from '../config'
 
 const { fontSizes } = theme
 
@@ -44,7 +45,7 @@ export const Contact: React.FC<IPROPS> = ({ contact }) => {
         <ContentContainer>
           <MDXRenderer>{contact.body}</MDXRenderer>
           <ButtonContainer>
-            <EmailLink href={`mailto:${'hi@ruiqi.dev'}`} target="_blank">
+            <EmailLink href={`mailto:${config.email}`} target="_blank">
               Say Hi
             </EmailLink>
           </ButtonContainer>

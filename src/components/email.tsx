@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { CONFIG } from '../config'
+import { config } from '../config'
 import styled from 'styled-components'
 import { theme, media } from '../styles'
 const { colors, fontSizes, fonts } = theme
 
-const { email } = CONFIG
+const { email } = config
 
 const EmailContainer = styled.div`
   width: 40px;
@@ -43,8 +43,6 @@ const EmailLink = styled.a`
 `
 
 export const Email: React.FC = () => {
-  const isMounted = true
-
   return (
     <EmailContainer>
       <EmailLinkWrapper>
