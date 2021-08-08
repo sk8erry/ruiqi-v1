@@ -9,7 +9,8 @@ const Container = styled.div`
   justify-content: center;
   font-family: ${fonts.SFMono};
   font-size: ${fontSizes.xxmsall};
-  padding: 30px;
+  padding: 40px 20px;
+  text-align: center;
 `
 
 export const Footer = () => {

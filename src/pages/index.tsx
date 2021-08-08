@@ -5,6 +5,10 @@ import { GlobalStyle } from '../styles'
 import { isMobile } from 'react-device-detect'
 import { graphql } from 'gatsby'
 
+// TODO: cleanup this entire mess
+// TODO: site manifest / SEO
+// TODO: add global deployment / multi lingual to Tesla experience
+
 const IndexPage = ({ data: { about, work, contact } }) => {
   const [isMounted, setIsMounted] = React.useState(false)
 

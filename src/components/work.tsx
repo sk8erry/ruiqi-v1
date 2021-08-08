@@ -5,7 +5,7 @@ import * as React from 'react'
 import { useRef } from 'react'
 import styled from 'styled-components'
 import { useOnScreen } from '../hooks'
-import { mixins, theme } from '../styles'
+import { media, mixins, theme } from '../styles'
 import { CyberImage } from './cyberImage'
 import { SectionTitle } from './sectionTitle'
 import Img from 'gatsby-image'
@@ -82,6 +82,7 @@ const TechListContainer = styled.ul`
     list-style-type: none;
     font-family: ${fonts.SFMono} !important;
     font-size: ${fontSizes.small};
+    ${media.thone`font-size: ${fontSizes.xsmall}; margin: 5px 5px;`}
     color: ${theme.colors.green};
     margin: 7px 7px;
     background: ${theme.colors.highlight};
