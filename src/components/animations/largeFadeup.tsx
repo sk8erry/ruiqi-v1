@@ -16,12 +16,15 @@ const AnimationStyle = createGlobalStyle`
   &.${animationName}-enter {
     opacity: 0;
     transform: translateY(120px);
-    transition: opacity ${animationDuration.long}ms ${easing}, transform ${animationDuration.long}ms ${easing};
   }
   &.${animationName}-enter-active {
     opacity: 1;
     transform: translateY(0px);
     transition: opacity ${animationDuration.long}ms ${easing}, transform ${animationDuration.long}ms ${easing};
+  }
+  &.${animationName}-enter-done {
+    opacity: 1;
+    transform: translateY(0px);
   }
   &.${animationName}-exit-active {
     opacity: 0;
@@ -33,7 +36,7 @@ const AnimationStyle = createGlobalStyle`
 export const LargeFadeUp: React.FC<IPROPS> = (props) => {
   const transitionProps = {
     ...props,
-    unmountOnExit: true,
+    // unmountOnExit: true,
     timeout: 1500,
     classNames: animationName
   }

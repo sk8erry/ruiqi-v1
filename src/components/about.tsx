@@ -5,6 +5,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { useOnScreen } from '../hooks'
 import { theme, mixins, media } from '../styles'
+import { Fadeup } from './animations'
 import { CyberImage } from './cyberImage'
 import { SectionTitle } from './sectionTitle'
 
@@ -28,6 +29,7 @@ const ImgWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  ${mixins.fadeupReady}
 `
 
 const UnorderedList = styled.ul`
@@ -39,6 +41,10 @@ const UnorderedList = styled.ul`
   li {
     letter-spacing: 0.1em;
   }
+`
+
+const FadeupTransitionInner = styled.div`
+  ${mixins.fadeupReady}
 `
 
 export const About: React.FC<any> = ({ about }) => {
@@ -58,19 +64,23 @@ export const About: React.FC<any> = ({ about }) => {
 
   return (
     <Container ref={ref}>
-      <SectionTitle>{title}</SectionTitle>
+      <SectionTitle trigger={isInView}>{title}</SectionTitle>
       <Grid>
-        <div>
-          <MDXRenderer>{body}</MDXRenderer>
-          <UnorderedList>
-            {skills.map((skill: string, i: number) => (
-              <li key={i}>{skill}</li>
-            ))}
-          </UnorderedList>
-        </div>
-        <ImgWrapper>
-          <CyberImage fluid={fluid}></CyberImage>
-        </ImgWrapper>
+        <Fadeup in={isInView}>
+          <FadeupTransitionInner style={{ transitionDelay: '200ms' }}>
+            <MDXRenderer>{body}</MDXRenderer>
+            <UnorderedList>
+              {skills.map((skill: string, i: number) => (
+                <li key={i}>{skill}</li>
+              ))}
+            </UnorderedList>
+          </FadeupTransitionInner>
+        </Fadeup>
+        <Fadeup in={isInView}>
+          <ImgWrapper style={{ transitionDelay: '200ms' }}>
+            <CyberImage fluid={fluid}></CyberImage>
+          </ImgWrapper>
+        </Fadeup>
       </Grid>
     </Container>
   )

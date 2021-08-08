@@ -43,6 +43,10 @@ const LangingPageItem = styled.div`
   justify-content: center;
 `
 
+const TransitionInner = styled.div`
+  ${mixins.largeFadeupReady};
+`
+
 const BigText = styled.h1`
   color: ${colors.slate};
   font-size: 26rem;
@@ -80,7 +84,7 @@ const IconWrapperMobile = styled.div`
   ${media.thone`display: block`};
 `
 
-export const Landing: React.FC<{ handleScroll: () => void }> = ({ handleScroll }) => {
+export const Landing: React.FC<{ handleScroll: (sectionName: string) => void }> = ({ handleScroll }) => {
   const isMounted = useIsMounted()
 
   const [navItems, setNavItems] = React.useState([
@@ -130,19 +134,19 @@ export const Landing: React.FC<{ handleScroll: () => void }> = ({ handleScroll }
           {navItems.map((navItem) => (
             <LangingPageItem key={navItem.id}>
               <LargeFadeUp in={isMounted}>
-                <div style={{ transitionDelay: `${navItem.id * 100}ms` }}>
+                <TransitionInner style={{ transitionDelay: `${navItem.id * 100}ms` }}>
                   <LandingPageLink
                     onMouseEnter={() => onMouseEnter({ target: navItem })}
                     onMouseLeave={() => onMouseLeave({ target: navItem })}
                     onClick={() => {
-                      handleScroll()
+                      handleScroll(navItem.title)
                       setTimeout(() => onMouseLeave({ target: navItem }), 500)
                     }}
                   >
                     <IconWrapper>{navItem.icon(200)}</IconWrapper>
                     <IconWrapperMobile>{navItem.icon(120)}</IconWrapperMobile>
                   </LandingPageLink>
-                </div>
+                </TransitionInner>
               </LargeFadeUp>
             </LangingPageItem>
           ))}

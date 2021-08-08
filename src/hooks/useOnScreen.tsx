@@ -5,7 +5,7 @@ export const useOnScreen = (ref: any) => {
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => setIsInView(entry.isIntersecting))
-    observer.observe(ref.current)
+    observer.observe(ref?.current)
     // Remove the observer as soon as the component is unmounted
     return () => {
       observer.disconnect()

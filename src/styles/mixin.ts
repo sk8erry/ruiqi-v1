@@ -60,7 +60,7 @@ const mixins = {
       width: 0;
       height: 1px;
       position: relative;
-      bottom: 0.5em;
+      bottom: 0.2em;
       background-color: ${colors.green};
       transition: ${transition};
     }
@@ -135,6 +135,26 @@ const mixins = {
     ${media.desktop`padding: 0 100px;`};
     ${media.tablet`padding: 0 50px;`};
     ${media.phablet`padding: 0 25px;`};
+  `,
+
+  largeFadeupReady: css`
+    opacity: 0;
+    transform: translateY(120px);
+  `,
+
+  fadeupReady: css`
+    opacity: 0;
+    transform: translateY(20px);
+  `,
+
+  fadeleftReady: css`
+    opacity: 0;
+    transform: translateX(20px);
+  `,
+
+  faderightReady: css`
+    opacity: 0;
+    transform: translateX(-20px);
   `
 }
 
