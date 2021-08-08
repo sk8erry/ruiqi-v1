@@ -13,6 +13,10 @@ import { Helmet } from 'react-helmet'
 export const Head = (): React.ReactElement => {
   return (
     <Helmet>
+      <html lang={config.siteLang} prefix="og: http://ogp.me/ns#" />
+      <title itemProp="name" lang={config.siteLang}>
+        {config.siteTitle}
+      </title>
       <link rel="icon" type="image/png" sizes="192x192" href={androidChrome192x192} />
       <link rel="icon" type="image/png" sizes="384x384" href={androidChrome384x384} />
       <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />

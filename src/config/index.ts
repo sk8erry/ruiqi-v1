@@ -5,8 +5,8 @@ export const config = {
   siteKeywords:
     'Ruiqi Yang, Ricky Yang, Tesla, frontend, software engineer, front-end engineer, web developer, javascript',
   siteUrl: 'https://ruiqi.dev',
-  siteLanguage: 'en_US',
-
+  siteLocale: 'en_US',
+  siteLang: 'en',
   googleVerification: 'qIvufSWAj98bKbRP4CyEF_vEbHXhpFtBP8rwP1ro6GQ',
 
   name: 'Ruiqi Yang',
