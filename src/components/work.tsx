@@ -116,7 +116,7 @@ export const Work: React.FC<any> = ({ work }) => {
               <WorkEntryContainer key={slug} style={{ transitionDelay: `${i * 100}ms` }}>
                 <WorkTitle>
                   {title}{' '}
-                  <a href={url} target="_blank">
+                  <a href={url} target="_blank" rel="nofollow noopener noreferrer">
                     @ {company}
                   </a>
                 </WorkTitle>

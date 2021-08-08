@@ -69,8 +69,8 @@ const NameContainer = styled.div`
   left: 0;
   padding: 1rem;
   font-size: ${fontSizes.large};
-  a {
-    ${mixins.inlineLink}
+  span {
+    color: ${colors.green};
   }
 `
 
@@ -126,7 +126,7 @@ export const Landing: React.FC<{ handleScroll: (sectionName: string) => void }> 
     <PageContainer>
       <Fadedown in={isMounted}>
         <NameContainer>
-          <a>Ruiqi Yang</a> - Frontend Developer
+          <span>Ruiqi Yang</span> - Frontend Developer
         </NameContainer>
       </Fadedown>
       <LandingPageItemContainer>
