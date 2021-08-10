@@ -22,7 +22,7 @@ const LandingPageItemContainer = styled.div`
   in-height: 100vh;
   display: flex;
   align-items: center;
-  min-width: 100vw;
+  min-width: 100%;
   min-height: 100vh;
 `
 

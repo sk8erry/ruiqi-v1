@@ -169,6 +169,19 @@ const GlobalStyle = createGlobalStyle`
   .nav-link-text {
     color: black;
   }
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: ${colors.navy};
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: ${colors.navy};
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: ${colors.green};
+  }
 `
 
 export default GlobalStyle
