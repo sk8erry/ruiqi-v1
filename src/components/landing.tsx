@@ -110,6 +110,8 @@ export const Landing: React.FC<{ handleScroll: (sectionName: string) => void }> 
 
   const [scrolling] = useScroll()
 
+  const linkIconsContainerRef = React.useRef(null)
+
   const onMouseEnter = ({ target }) => {
     const newNavItems = [...navItems]
     newNavItems.find((item) => item.id === target.id).active = true
@@ -122,6 +124,20 @@ export const Landing: React.FC<{ handleScroll: (sectionName: string) => void }> 
     setNavItems(newNavItems)
   }
 
+  const handleNav = (navItem) => {
+    handleScroll(navItem.title)
+    setTimeout(() => onMouseLeave({ target: navItem }), 500)
+  }
+
+  const removeFocus = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    // On hover, remove all focus except for current element, because user might have focused another element using tab.
+    linkIconsContainerRef.current.querySelectorAll('a').forEach((el: HTMLAnchorElement) => {
+      if (el !== e.target) {
+        el.blur()
+      }
+    })
+  }
+
   return (
     <PageContainer>
       <Fadedown in={isMounted}>
@@ -130,21 +146,29 @@ export const Landing: React.FC<{ handleScroll: (sectionName: string) => void }> 
         </NameContainer>
       </Fadedown>
       <LandingPageItemContainer>
-        <LandingPageItemInnerContainer>
-          {navItems.map((navItem) => (
+        <LandingPageItemInnerContainer ref={linkIconsContainerRef}>
+          {navItems.map((navItem, i) => (
             <LangingPageItem key={navItem.id}>
               <LargeFadeUp in={isMounted}>
                 <TransitionInner style={{ transitionDelay: `${navItem.id * 100}ms` }}>
                   <LandingPageLink
-                    onMouseEnter={() => onMouseEnter({ target: navItem })}
-                    onMouseLeave={() => onMouseLeave({ target: navItem })}
-                    onClick={() => {
-                      handleScroll(navItem.title)
-                      setTimeout(() => onMouseLeave({ target: navItem }), 500)
+                    tabIndex={i + 1}
+                    onMouseEnter={(e) => {
+                      removeFocus(e)
+                      onMouseEnter({ target: navItem })
                     }}
+                    onMouseLeave={() => onMouseLeave({ target: navItem })}
+                    onClick={() => handleNav(navItem)}
+                    onKeyUp={(e) => {
+                      if (e.key === 'Enter') {
+                        handleNav(navItem)
+                      }
+                    }}
+                    onFocus={() => onMouseEnter({ target: navItem })}
+                    onBlur={() => onMouseLeave({ target: navItem })}
                   >
-                    <IconWrapper>{navItem.icon(200)}</IconWrapper>
-                    <IconWrapperMobile>{navItem.icon(120)}</IconWrapperMobile>
+                    <IconWrapper aria-label={navItem.title}>{navItem.icon(200)}</IconWrapper>
+                    <IconWrapperMobile aria-label={navItem.title}>{navItem.icon(120)}</IconWrapperMobile>
                   </LandingPageLink>
                 </TransitionInner>
               </LargeFadeUp>
